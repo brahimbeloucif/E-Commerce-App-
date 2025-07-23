@@ -30,6 +30,7 @@ class AppAssets {
   static const String svgMenu = 'assets/svgs/Menu.svg';
   static const String svgSearch = 'assets/svgs/Search.svg';
   static const String svgArrow = 'assets/svgs/arrow.svg';
+  static const String svgArrowDown = 'assets/svgs/Down.svg';
   static const String svgDelivery = 'assets/svgs/delivery.svg';
   static const String svgLine = 'assets/svgs/line.svg';
   static const String svgMin = 'assets/svgs/min.svg';

@@ -3,8 +3,10 @@ import 'package:e_commerce/components/custom_card.dart';
 import 'package:e_commerce/components/custom_text.dart';
 import 'package:e_commerce/components/footer_widget.dart';
 import 'package:e_commerce/components/header_widget.dart';
+import 'package:e_commerce/components/totaly_widget.dart';
 import 'package:e_commerce/core/app_assets.dart';
 import 'package:e_commerce/core/app_colors.dart';
+import 'package:e_commerce/screens/Place_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -25,16 +27,16 @@ class CheckoutScreen extends StatefulWidget {
 
   @override
   State<CheckoutScreen> createState() => _CheckoutScreenState();
-  
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
-  int number =1;
-   void incrementNumber() {
+  int number = 1;
+  void incrementNumber() {
     setState(() {
       number++;
     });
   }
+
   void decrementNumber() {
     setState(() {
       if (number > 1) number--;
@@ -54,23 +56,39 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               child: Column(
                 children: [
                   HeaderApp(),
-                  CustomCard(name: widget.name, img:  widget.img, price:  widget.price, despcription:  widget.despcription, number: number, onIncrement: incrementNumber, onDecrement:decrementNumber ,)
-                  ,
+                  CustomCard(
+                    name: widget.name,
+                    img: widget.img,
+                    price: widget.price,
+                    despcription: widget.despcription,
+                    number: number,
+                    onIncrement: incrementNumber,
+                    onDecrement: decrementNumber,
+                  ),
                   Divider(thickness: 1, color: Colors.grey.shade300),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12,
+                      horizontal: 40,
+                    ),
                     child: Row(
                       children: [
                         SvgPicture.asset(AppAssets.svgPromo, width: 24),
                         Gap(20),
-                        CustomText(name: 'Add promo code', color: Color(0xff333333)),
+                        CustomText(
+                          name: 'Add promo code',
+                          color: Color(0xff333333),
+                        ),
                       ],
                     ),
                   ),
                   Divider(thickness: 1, color: Colors.grey.shade300),
-            
+
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12,
+                      horizontal: 40,
+                    ),
                     child: Row(
                       children: [
                         SvgPicture.asset(AppAssets.svgDelivery, width: 24),
@@ -82,28 +100,22 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     ),
                   ),
                   Divider(thickness: 1, color: Colors.grey.shade300),
-            Spacer(),
-                  Row(
-                    children: [
-                      
-                        CustomText(name: 'Est. Total', color: Color(0xff333333),size: 20),
-                        Spacer(),
-            
-                        CustomText(name: '\$${widget.price*number}',size: 20, color:  AppColors.pricingColor),
-                      ],
-                  ),
-                 
-                ],
-                
+                  Spacer(),
+                  TotalyWidget(number: number, price: widget.price)                ],
               ),
             ),
           ),
-            Gap(20),
-           FooterApp()
+          Gap(20),
+          FooterApp(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (c) => PlaceOrderScreen()),
+              );
+            }, label: 'Checkout', svg: AppAssets.svgShoppingBag,
+          ),
         ],
       ),
     );
   }
 }
-
-
