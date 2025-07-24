@@ -6,8 +6,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class HeaderApp extends StatelessWidget {
+  final String label;
+  final double ?spacing ;
   const HeaderApp({
-    super.key,
+    super.key, required this.label,  this.spacing,
   });
 
   @override
@@ -17,11 +19,11 @@ class HeaderApp extends StatelessWidget {
     Gap(20),
     Center(
       child: CustomText(
-        name: 'Checkout'.toUpperCase(),
+        name: label.toUpperCase(),
         color: Colors.black,
         size: 24,
         fontWeight: FontWeight.bold,
-        spacing: 10,
+        spacing: spacing??10,
       ),
     ),
         Gap(10),

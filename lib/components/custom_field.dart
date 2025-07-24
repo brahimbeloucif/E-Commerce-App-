@@ -12,6 +12,7 @@ class CustomField extends StatelessWidget {
   final String mainLabel;
   final String svg;
   final bool showTitle; // New parameter
+  final VoidCallback? onTap;
 
   const CustomField({
     super.key,
@@ -20,6 +21,7 @@ class CustomField extends StatelessWidget {
     required this.mainLabel,
     required this.svg,
       this.title,
+      this.onTap,
     this.showTitle = true, // Default to true
   });
 
@@ -54,7 +56,9 @@ class CustomField extends StatelessWidget {
                   color: AppColors.orderGreyColor,
                 ),
               Gap(20),
-              SvgPicture.asset(svg),
+              GestureDetector(
+                onTap:onTap ,
+                child: SvgPicture.asset(svg)),
             ],
           ),
         ),

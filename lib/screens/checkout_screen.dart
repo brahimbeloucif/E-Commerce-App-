@@ -55,7 +55,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: [
-                  HeaderApp(),
+                  HeaderApp(label: 'Checkout',),
                   CustomCard(
                     name: widget.name,
                     img: widget.img,
@@ -110,9 +110,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (c) => PlaceOrderScreen()),
+                MaterialPageRoute(builder: (c) => PlaceOrderScreen(number: number, price: widget.price)),
               );
-            }, label: 'Checkout', svg: AppAssets.svgShoppingBag,
+            }, label: 'Checkout', svg: AppAssets.svgShoppingBag, isSvg: true,
           ),
         ],
       ),
