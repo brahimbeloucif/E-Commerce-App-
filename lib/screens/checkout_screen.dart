@@ -57,14 +57,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 children: [
                   HeaderApp(label: 'Checkout',),
                   CustomCard(
-                    name: widget.name,
-                    img: widget.img,
-                    price: widget.price,
-                    despcription: widget.despcription,
-                    number: number,
-                    onIncrement: incrementNumber,
-                    onDecrement: decrementNumber,
-                  ),
+        name: widget.name,
+        img: widget.img,
+        price: widget.price,
+        despcription: widget.despcription,
+        number: number,
+        onIncrement: incrementNumber,
+        onDecrement: decrementNumber,
+      ),
                   Divider(thickness: 1, color: Colors.grey.shade300),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -110,7 +110,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (c) => PlaceOrderScreen(number: number, price: widget.price)),
+                MaterialPageRoute(builder: (c) => PlaceOrderScreen(number: number, price: widget.price, name: widget.name, img:widget.img, despcription: widget.despcription)),
               );
             }, label: 'Checkout', svg: AppAssets.svgShoppingBag, isSvg: true,
           ),

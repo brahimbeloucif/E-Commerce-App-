@@ -18,8 +18,10 @@ class InfoDisplay extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Column(
+                                  
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    
                                     CustomText(
                                       name:
                                           '${savedData['first'] + '  '+savedData['last']}'

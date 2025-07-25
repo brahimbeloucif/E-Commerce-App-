@@ -5,8 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-
-class CustomCard extends StatefulWidget {
+class CustomCard extends StatelessWidget {
   final String name;
   final String img;
   final double price;
@@ -14,6 +13,7 @@ class CustomCard extends StatefulWidget {
   final int number;
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
+
   const CustomCard({
     super.key,
     required this.name,
@@ -26,46 +26,34 @@ class CustomCard extends StatefulWidget {
   });
 
   @override
-  State<CustomCard> createState() => _CustomCardState();
-}
-
-class _CustomCardState extends State<CustomCard> {
-   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Image.asset(widget.img, width: 120),
-        Gap(11),
+        Image.asset(img, width: 120),
+        const Gap(11),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomText(name: widget.name, color: Colors.black),
-              SizedBox(
-                child: CustomText(
-                  name: widget.despcription,
-                  color: Color(0xff555555),
-                  maxline: 1,
-                ),
-              ),
-              Gap(5),
+              CustomText(name: name, color: Colors.black),
+              CustomText(name: despcription, color: Colors.grey),
+              const Gap(5),
               Row(
                 children: [
-                  qtyWidget( widget.onDecrement, AppAssets.svgMin),
-                  Gap(12),
+                  qtyWidget(onDecrement, AppAssets.svgMin),
+                  const Gap(12),
                   CustomText(
-                    name: widget.number.toString(),
+                    name: number.toString(),
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
-                  Gap(12),
-                  qtyWidget(widget.onIncrement, AppAssets.svgPlus),
+                  const Gap(12),
+                  qtyWidget(onIncrement, AppAssets.svgPlus),
                 ],
               ),
-              Gap(5),
-
+              const Gap(5),
               CustomText(
-                name: '\$${widget.price}',
+                name: '\$${price}',
                 color: AppColors.pricingColor,
                 size: 22,
               ),
@@ -76,11 +64,11 @@ class _CustomCardState extends State<CustomCard> {
     );
   }
 
-  Widget qtyWidget(onTap, String svg) {
+  Widget qtyWidget(VoidCallback onTap, String svg) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(3),
+        padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(color: Colors.grey.shade400, width: 2),

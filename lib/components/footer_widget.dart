@@ -21,6 +21,7 @@ class FooterApp extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
         width: double.infinity,
         color: Colors.black,

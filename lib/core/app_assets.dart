@@ -38,6 +38,7 @@ class AppAssets {
   static const String svgPromo = 'assets/svgs/promo.svg';
   static const String svgShoppingBag = 'assets/svgs/shopping bag.svg';
   static const String svgVisa = 'assets/svgs/visa.svg';
+  static const String svgStar = 'assets/svgs/star.svg';
 
   // Text SVGs
   static const String svg10 = 'assets/texts/10.svg';
